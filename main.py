@@ -22,16 +22,14 @@ def get_number_of_words(text):
 # returns as dictionary character > count
 def get_count_charactes(text):
     char_count = {}
-    lowered_text = text.lower()
-    char_list = list(lowered_text)
-    chars = set(char_list)
-
-    for char in chars:
-        char_count[char] = 0
-
-    for char in char_list:
-        char_count[char] += 1
+    for char in text:
+        lowered = char.lower()
+        if lowered in char_count:
+            char_count[lowered] += 1
+        else:
+            char_count[lowered] = 0
     return char_count
+
     
 main()
 
