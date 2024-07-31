@@ -3,9 +3,13 @@ def main():
     text = get_book_text(book_path)
     number_of_words = get_number_of_words(text)
     count_characters = get_count_charactes(text)
+    sorted_characters = sort_on(count_characters)
 
+    print(f"--- Begin report of {book_path} ---")
     print(f"{number_of_words} words found in the document")
-    print(f"counted how many times apears every character in document: {count_characters}")
+    for c in sorted_characters:
+        print(f"The {c["char"]} character was found {c["num"]} times")
+    print("--- End report ---")
 
 
 # opens book as a string from books directory
@@ -29,6 +33,13 @@ def get_count_charactes(text):
         else:
             char_count[lowered] = 0
     return char_count
+
+# sorts all characters from most used in document to least
+def sort_on(characters):
+    list_of_char = [{"char" : key, "num": value} for key, value in characters.items()]
+    list_of_char.sort(reverse=True, key=lambda x: x["num"])
+    return list_of_char
+    
 
     
 main()
