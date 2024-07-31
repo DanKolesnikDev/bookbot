@@ -7,8 +7,12 @@ def main():
 
     print(f"--- Begin report of {book_path} ---")
     print(f"{number_of_words} words found in the document")
+    
     for c in sorted_characters:
+        if not c["char"].isalpha():
+            continue
         print(f"The {c["char"]} character was found {c["num"]} times")
+        
     print("--- End report ---")
 
 
